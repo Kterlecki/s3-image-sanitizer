@@ -16,7 +16,7 @@ resource "aws_s3_bucket_lifecycle_configuration" "lifecycle" {
     id     = var.is_expiration_lifecycle_rule_enabled ? "expire-after-${var.expire_after_days}-days" : "expiration-lifecycle-rule-disabled"
     status = var.is_expiration_lifecycle_rule_enabled ? "Enabled" : "Disabled"
     filter {}
-    
+
     # Only delete objects that are current versions, Each upload will have a unique name, so dont need to enable noncurrent version expiration
     expiration {
       days = var.expire_after_days
@@ -29,17 +29,17 @@ resource "aws_s3_bucket_lifecycle_configuration" "lifecycle" {
 #   id     = "storage-class-transitions"
 #   status = "Enabled"
 #   filter {}
-  
+
 #   transition {
 #     days          = 30
 #     storage_class = "STANDARD_IA"  # Infrequent Access
 #   }
-  
+
 #   transition {
 #     days          = 90
 #     storage_class = "GLACIER"      # Archive after 90 days
 #   }
-  
+
 #   transition {
 #     days          = 365
 #     storage_class = "DEEP_ARCHIVE" # Deep archive after 1 year

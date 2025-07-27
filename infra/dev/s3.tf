@@ -23,5 +23,5 @@ module "lambda_python_zip_s3" {
   environment                      = var.environment
   are_bucket_notifications_enabled = false
   is_intransit_https_enabled       = true
-  enable_s3_bucket_versioning      = "Enabled" 
+  enable_s3_bucket_versioning      = "Enabled"
 }

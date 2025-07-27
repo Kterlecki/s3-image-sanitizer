@@ -1,6 +1,6 @@
 variable "type" {
-  type        = string
-  default     = null
+  type    = string
+  default = null
 }
 
 variable "attribute" {

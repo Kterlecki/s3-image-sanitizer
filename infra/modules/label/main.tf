@@ -9,7 +9,7 @@ locals {
       environment = local.environment
     }
   }
-  
+
   type        = var.type == null ? var.context.type : var.type
   attribute   = var.attribute == null
   environment = var.environment == null ? var.context.environment : var.environment

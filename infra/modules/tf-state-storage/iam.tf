@@ -3,8 +3,8 @@ data "aws_caller_identity" "current" {}
 resource "aws_iam_role" "tf_state_management_role" {
   name = "${module.label_tf_state_management_role.name}-role"
 
-  assume_role_policy   = data.aws_iam_policy_document.s3_state_assume_role_policy.json
-  tags                 = module.label.tags
+  assume_role_policy = data.aws_iam_policy_document.s3_state_assume_role_policy.json
+  tags               = module.label.tags
 }
 
 data "aws_iam_policy_document" "s3_state_assume_role_policy" {
