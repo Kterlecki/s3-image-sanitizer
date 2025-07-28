@@ -15,7 +15,7 @@ provider "aws" {
 
 data "aws_vpc" "imagesanitizer" {
   # VPC shouldnt be created in this project, as a result we are using a data source to query the existing VPC.
-  # So this query selects VPC.
+  # So this query selects VPC. Your environment should have one VPC created.
   default = false
 }
 

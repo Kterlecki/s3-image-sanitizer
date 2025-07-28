@@ -86,6 +86,6 @@ locals {
 
   env_vars = {
     "PARAMETERS_SECRETS_EXTENSION_HTTP_PORT" = "2773"
-    "S3_BUCKET"                              = data.aws_s3_bucket.processed_files.bucket
+    "DESTINATION_BUCKET"                     = module.image_output_s3.bucket_name
   }
 }

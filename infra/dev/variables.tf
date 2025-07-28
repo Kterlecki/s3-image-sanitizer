@@ -19,7 +19,7 @@ variable "project" {
 variable "lambda_image_command" {
   type        = list(string)
   description = "The Lambda Handler image command used to specify the entry point for the lambda function to target."
-  default     = ["apps.etl.src.main.handler"]
+  default     = ["apps.etl.src.main.lambda_handler"]
 }
 
 variable "lambda_image_entrypoint" {
@@ -32,12 +32,6 @@ variable "package_type" {
   description = "The package type for the lambda function"
   default     = "Image"
 }
-
-# variable "imagesanitizer_ecr_url" {
-#   description = "URL for the ECR repository of ImageSanitizer"
-#   type        = string
-#   default     = "{amazon-account-id}.dkr.ecr.us-east-1.amazonaws.com/imagesanitizer-crossenv-ecrrepository-artifactstorage"
-# }
 
 variable "lambda_timeout" {
   type        = string
