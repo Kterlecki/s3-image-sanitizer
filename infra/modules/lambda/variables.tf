@@ -73,3 +73,13 @@ variable "ephemeral_storage_size" {
   description = "The ephemeral storage size for the lambda function in MB (512-10240)"
   default     = 512
 }
+
+variable "landing_s3_bucket_id" {
+  type        = string
+  description = "The ID of the S3 bucket to create notifications for"
+}
+
+variable "landing_s3_bucket_arn" {
+  type        = string
+  description = "The ARN of the S3 bucket to create notifications for"
+}

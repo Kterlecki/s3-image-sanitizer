@@ -14,6 +14,8 @@ module "imagesanitizer_lambda" {
   package_type            = var.package_type
   memory_size             = var.memory_size
   ephemeral_storage_size  = var.ephemeral_storage_size
+  landing_s3_bucket_id    = module.image_landing_s3.bucket_id
+  landing_s3_bucket_arn   = module.image_landing_s3.arn
   lambda_role_policy_statements = [
     {
       sid    = "ImageSanitizerAllowECRPull"
