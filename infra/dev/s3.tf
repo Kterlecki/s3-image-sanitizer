@@ -5,6 +5,7 @@ module "image_landing_s3" {
   environment                      = var.environment
   are_bucket_notifications_enabled = true
   is_intransit_https_enabled       = true
+  is_expiration_lifecycle_rule_enabled = true
 }
 
 module "image_output_s3" {
@@ -16,12 +17,12 @@ module "image_output_s3" {
   is_intransit_https_enabled       = true
 }
 
-module "lambda_python_zip_s3" {
-  source                           = "../modules/s3"
-  project                          = var.project
-  purpose                          = "${var.purpose}-lambda-python-zip"
-  environment                      = var.environment
-  are_bucket_notifications_enabled = false
-  is_intransit_https_enabled       = true
-  enable_s3_bucket_versioning      = "Enabled"
-}
+# module "lambda_python_zip_s3" {
+#   source                           = "../modules/s3"
+#   project                          = var.project
+#   purpose                          = "${var.purpose}-lambda-python-zip"
+#   environment                      = var.environment
+#   are_bucket_notifications_enabled = false
+#   is_intransit_https_enabled       = true
+#   enable_s3_bucket_versioning      = "Enabled"
+# }
