@@ -22,26 +22,15 @@ resource "aws_s3_bucket_lifecycle_configuration" "lifecycle" {
       days = var.expire_after_days
     }
   }
+  # Transition to cheaper storage classes
+  rule {
+    id     = "move-to-intelligent-tiering"
+    status = "Enabled"
+    filter {}
+
+    transition {
+      days          = 30
+      storage_class = "INTELLIGENT_TIERING"
+    }
+  }
 }
-
-# # Transition to cheaper storage classes
-# rule {
-#   id     = "storage-class-transitions"
-#   status = "Enabled"
-#   filter {}
-
-#   transition {
-#     days          = 30
-#     storage_class = "STANDARD_IA"  # Infrequent Access
-#   }
-
-#   transition {
-#     days          = 90
-#     storage_class = "GLACIER"      # Archive after 90 days
-#   }
-
-#   transition {
-#     days          = 365
-#     storage_class = "DEEP_ARCHIVE" # Deep archive after 1 year
-#   }
-# }
