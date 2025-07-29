@@ -56,3 +56,11 @@ variable "ephemeral_storage_size" {
   description = "The ephemeral storage size for the lambda function in MB"
   default     = 2048
 }
+variable "default_roles_for_accessing_secrets" {
+  type        = list(string)
+  description = "List of roles that should have access to secrets"
+  default = [
+    "arn:aws:iam::{AWS_ACCOUNT_ID}:role/ADMIN-ROLE",
+  ]
+}
+

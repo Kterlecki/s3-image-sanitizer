@@ -8,12 +8,14 @@ variable "environment" {
   description = "Environment name"
 }
 
-variable "landing_s3_bucket_id" {
-  type        = string
-  description = "Landing S3 bucket ID"
+variable "iam_user_policy_statements" {
+  type        = any
+  description = "A list of policy statements to allow the iam user to access AWS resources."
+  default     = []
 }
 
-variable "output_s3_bucket_arn" {
+variable "purpose" {
   type        = string
-  description = "Output S3 bucket ARN"
+  description = "Purpose of the iam user function"
 }
+
