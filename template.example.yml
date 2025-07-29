@@ -1,0 +1,16 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+
+Resources:
+  QualityDocsFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: ImageSanitationFunction
+      Handler: src/main.lambda_handler
+      Runtime: python3.11
+      CodeUri: apps/etl/
+      Timeout: 60
+      MemorySize: 512
+      Environment:
+        Variables:
+          DESTINATION_BUCKET: "your-destination-bucket-name"
