@@ -1,0 +1,15 @@
+# Use AWS Lambda Python runtime base image
+FROM public.ecr.aws/lambda/python:3.11  as builder
+
+# Copy the requirements file first for better Docker layer caching
+COPY apps/etl/requirements.txt ${LAMBDA_TASK_ROOT}/
+
+# Install Python dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Multi staged image to reduce final image size
+FROM public.ecr.aws/lambda/python:3.11
+COPY --from=builder ${LAMBDA_TASK_ROOT} ${LAMBDA_TASK_ROOT}
+COPY apps/ ${LAMBDA_TASK_ROOT}/
+
+CMD ["apps.etl.src.main.lambda_handler"]
